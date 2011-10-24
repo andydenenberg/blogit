@@ -1,0 +1,19 @@
+<h1>New comment</h1>
+
+
+<p>
+  <b>Name:</b>
+<br>
+  <%= @post.name %>
+</p>
+<p>
+  <b>Post:</b>
+<br>
+<p>
+  <%= @post.body %>
+</p>
+
+
+<%= render 'form' %>
+
+<%= link_to 'Back', comments_path %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+<br>
+  <%= @post.name %>
+</p>
+<p>
+  <b>Post:</b>
+<br>
+  <%= @post.body %>
+<br>
+  <b>Id:</b>
+<br>
+  <%=     session[:post_id] %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %> |
+<%= link_to 'Home', home_index_path %>
+
+
+
+<p>
+  <b>Comments: </b >(<%= @post.comments.count %>)
+<br>
+<%= link_to 'New', new_comment_path %>
+<br>
+<% if @post.comments.count.zero? %>
+No Comments.
+<% else %>
+<% @post.comments.each do |c| %>
+   <li><%= link_to(c.name,comment_path(c)) %></li> 
+<% end %>
+<% end %>

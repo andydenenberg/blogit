@@ -1,0 +1,18 @@
+<h1>Editing comment</h1>
+
+<p>
+  <b>Title:</b>
+<br>
+  <%= @comment.post.name %>
+</p>
+<p>
+  <b>Post:</b>
+<br>
+  <%= @comment.post.body %>
+
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @comment %> |
+<%= link_to 'Back', comments_path %> |
+<%= link_to 'Home', home_index_path %>

@@ -1,0 +1,14 @@
+
+<%= form_tag "/login" do %>
+ 
+  <div class="field">
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "login" %>
+  </div>
+
+<% end %>
+
+

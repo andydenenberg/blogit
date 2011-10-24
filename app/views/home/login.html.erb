@@ -1,0 +1,10 @@
+<h1>Ruby on Rails Blogger</h1>
+
+<p id="notice"><%= notice %></p>
+
+
+<p>  <%= flash[:notice] =  "The logged in user is now - #{session[:name]}" %>
+<p>
+        <%= @user %>
+<p>
+<%= link_to 'Home', home_index_path %>
