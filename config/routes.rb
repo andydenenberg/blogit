@@ -7,8 +7,6 @@ Blogger::Application.routes.draw do
   resources :comments
   resources :users
 
-  get "home/index"
-
   match '/logout' , :to => 'users#logout'
   match '/login' , :to => 'home#login'
 
