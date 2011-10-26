@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   @user = User.all  # simple, but slow = could also punch admin into db via rails Console
      if @user.count
        @admin = User.new()
-       @admin.name = 'Admin'
+       @admin.name = 'admin'
        @admin.save
      end
   

@@ -1,19 +1,34 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
+
   def index
 
-#   @posts = Post.all
-#   @posts = Post.find(:all, :conditions => { :created_by => 'Joe' })
-    @posts = Post.find(:all, :conditions => { :created_by => session[:name] })
-
-    @comments = Comment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
+    if session[:name]
+      @posts = Post.find(:all, :conditions => { :created_by => session[:name] })
+      @comments = Comment.all
+          respond_to do |format|
+             format.html # index.html.erb
+             format.json { render json: @posts }
+          end
+    else
+          redirect_to root_path 
     end
   end
+
+  def post_all
+    if session[:name]
+      @posts = Post.all
+      @comments = Comment.all
+          respond_to do |format|
+             format.html # index.html.erb
+             format.json { render json: @posts }
+          end
+    else
+          redirect_to root_path 
+    end
+  end
+
 
   # GET /posts/1
   # GET /posts/1.json
@@ -31,9 +46,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-
     session[:post_id] = @post.id
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }

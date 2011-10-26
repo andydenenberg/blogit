@@ -1,4 +1,4 @@
-<h1>Current users</h1>
+<h1>Users</h1>
 
 <table>
   <tr>
@@ -11,7 +11,9 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
+    <td> </td>
     <td><%= link_to 'Show', user %></td>
+    <td> </td>
 </tr>
 <% end %>
 </table>
@@ -22,6 +24,5 @@
 <%= link_to 'New User', new_user_path %>
 <p>
 <%= link_to 'Logout', logout_path %>
-<p>
 <%= link_to 'Home', root_path %>
-
+<p>

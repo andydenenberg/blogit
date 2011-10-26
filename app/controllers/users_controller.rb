@@ -2,11 +2,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
+    if session[:name]
+      @users = User.all
+         respond_to do |format|
+            format.html # index.html.erb
+            format.json { render json: @users }
+         end
+    else
+          redirect_to root_path 
     end
   end
 
@@ -15,9 +19,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+      @posts = Post.find(:all, :conditions => { :created_by => @user.name })
+      @comments = Comment.all
 
     respond_to do |format|
-      session[:name] = @user.name
       format.html # show.html.erb
       format.json { render json: @user }
     end
@@ -49,7 +54,7 @@ class UsersController < ApplicationController
 
         session[:name] = @user.name
 
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -111,7 +116,7 @@ class UsersController < ApplicationController
   def logout
     respond_to do |format|
       session[:name] = nil # logout the user
-      format.html { redirect_to home_index_path }
+      format.html { redirect_to root_path }
       format.json { head :ok }
     end
   end

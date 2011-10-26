@@ -9,22 +9,34 @@
   <b>Post:</b>
 <br>
   <%= @post.body %>
-<br>
-  <b>Id:</b>
-<br>
-  <%=     session[:post_id] %>
+</p>
+
+<table>
+  <tr>
+    <th>Created by: </th>
+    <th>at: </th>
+    <th></th>
+</tr>
+
+<p>
+  <tr>
+    <td><%= @post.created_by %> </td>
+    <td><%= @post.updated_at.strftime ("%Y-%m-%d %H:%M")  %></td>
+</tr>
+</table>
+</p>
+
+<p><b>Last Updated at: </b> <%= @post.created_at.strftime ("%Y-%m-%d %H:%M")  %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %> |
-<%= link_to 'Home', home_index_path %>
+<%= link_to 'Back', post_all_path %> |
+<%= link_to 'Home', root_path %>
 
 
 
 <p>
-  <b>Comments: </b >(<%= @post.comments.count %>)
-<br>
-<%= link_to 'New', new_comment_path %>
+  <b>Comments: </b >(<%= @post.comments.count %>) <%= link_to 'New', new_comment_path %>
 <br>
 <% if @post.comments.count.zero? %>
 No Comments.

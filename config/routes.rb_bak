@@ -8,7 +8,6 @@ Blogger::Application.routes.draw do
   resources :users
 
   match '/post_all' , :to => 'posts#post_all'
-#  match '/show_all' , :to => 'posts#show_all'
 
   match '/logout' , :to => 'users#logout'
   match '/login' , :to => 'home#login'

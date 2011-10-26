@@ -1,4 +1,26 @@
-<p id="notice"><%= notice %></p>
+<h1>Activity by <%= @user.name %></h1>
+
+<% if @posts.count > 0 %>
+  <% @posts.each do |post| %>
+       <br><b>Title:</b>  <%= post.name %>
+       <br><b>Post:</b>  <%= post.body %>
+       <br><b>Created at:</b> <%= post.created_at.strftime ("%Y-%m-%d %H:%M") %>
+       <br><b>Comments:</b> <%= post.comments.count %><br>
+            <% if post.comments.count.zero? %>
+                <% else %>
+	                 <% i=1 %>
+		         <% post.comments.each do |c| %>
+		         Comment #<%= i %> -
+		         <%= c.name %>
+		         <br>
+		         <% i += 1 %>
+                <% end %>
+	   <% end %>
+      <p>
+  <% end %>
+<% else %>
+No Posts
+<% end %>
 
 <p>
   <b>Name:</b>
@@ -8,5 +30,5 @@
 <p>  <%= flash[:notice] =  "The logged in user is now - #{session[:name]}" %>
 <p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'All Users', users_path %> |
+<%= link_to 'Home', root_path %>
