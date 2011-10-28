@@ -7,6 +7,8 @@ gem 'rails', '3.1.1'
 
 # gem 'sqlite3'
 
+gem 'therubyracer-heroku', :group => :production
+
 # Change to the following to push to Heroku
 group :production do 
   gem 'pg'
